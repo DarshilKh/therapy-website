@@ -42,11 +42,11 @@ The site emphasizes calm visuals, clear hierarchy, emotional clarity, and trust-
 
 ## 📂 Project Structure
 
-app/
+- app/
   page.tsx
   layout.tsx
   globals.css
-components/
+- components/
   Navbar.tsx
   Hero.tsx
   Intro.tsx
@@ -58,7 +58,7 @@ components/
   ProfessionalBackground.tsx
   FullWidthCTA.tsx
   Footer.tsx
-public/
+- public/
   images/
 
 ---
