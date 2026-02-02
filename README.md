@@ -43,23 +43,23 @@ The site emphasizes calm visuals, clear hierarchy, emotional clarity, and trust-
 ## 📂 Project Structure
 
 - app/
-  page.tsx
-  layout.tsx
-  globals.css
+-   page.tsx
+-   layout.tsx
+-   globals.css
 - components/
-  Navbar.tsx
-  Hero.tsx
-  Intro.tsx
-  Specialties.tsx
-  EmotionalValidation.tsx
-  About.tsx
-  OurOffice.tsx
-  FAQ.tsx
-  ProfessionalBackground.tsx
-  FullWidthCTA.tsx
-  Footer.tsx
+-   Navbar.tsx
+-   Hero.tsx
+-   Intro.tsx
+-   Specialties.tsx
+-   EmotionalValidation.tsx
+-   About.tsx
+-   OurOffice.tsx
+-   FAQ.tsx
+-   ProfessionalBackground.tsx
+-   FullWidthCTA.tsx
+-   Footer.tsx
 - public/
-  images/
+-  images/
 
 ---
 
