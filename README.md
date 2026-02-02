@@ -1,8 +1,8 @@
-# Therapy Practice Website – Frontend Assignment
+# Therapy Practice Website – Front-End Assignment
 
-This project is a responsive, design-forward website built as part of a frontend internship assignment for **Grow My Therapy**.
+This project is a responsive, design-forward website built as part of a **Front-End Developer Internship assignment for Grow My Therapy**.
 
-The goal was to **clone and redesign** a homepage template while preserving layout structure, then apply new branding, copy, and imagery based on a fictional therapist profile.
+The objective was to **clone and redesign** a homepage template—accurately preserving the original layout and structure—while applying a new visual theme, original copy, and curated imagery based on a fictional therapist profile.
 
 ---
 
@@ -43,28 +43,29 @@ The site emphasizes calm visuals, clear hierarchy, emotional clarity, and trust-
 ## 📂 Project Structure
 
 app/
-page.tsx
+  page.tsx
+  layout.tsx
+  globals.css
 components/
-Navbar.tsx
-Hero.tsx
-Intro.tsx
-Specialties.tsx
-EmotionalValidation.tsx
-About.tsx
-OurOffice.tsx
-FAQ.tsx
-ProfessionalBackground.tsx
-FullWidthCTA.tsx
-Footer.tsx
+  Navbar.tsx
+  Hero.tsx
+  Intro.tsx
+  Specialties.tsx
+  EmotionalValidation.tsx
+  About.tsx
+  OurOffice.tsx
+  FAQ.tsx
+  ProfessionalBackground.tsx
+  FullWidthCTA.tsx
+  Footer.tsx
 public/
-images/
-
+  images/
 
 ---
 
 ## 🚀 Live Demo
 
-👉 **Live Website:** (https://dr-maya-therapy.netlify.app/)
+👉 **Live Website:** https://dr-maya-therapy.netlify.app/
 
 ---
 
