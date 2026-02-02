@@ -64,7 +64,7 @@ images/
 
 ## 🚀 Live Demo
 
-👉 **Live Website:** (Add Netlify link here once deployed)
+👉 **Live Website:** (https://dr-maya-therapy.netlify.app/)
 
 ---
 
