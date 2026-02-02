@@ -1,26 +1,118 @@
+/* app/globals.css */
+
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+    /* Primary Colors */
+    --color-primary-50: #f8f7f6;
+    --color-primary-100: #f0eeec;
+    --color-primary-200: #e2dfdb;
+    --color-primary-300: #cec9c3;
+    --color-primary-400: #b5ada5;
+    --color-primary-500: #9c938a;
+    --color-primary-600: #847a70;
+    --color-primary-700: #6b6259;
+    --color-primary-800: #544c45;
+    --color-primary-900: #3d3733;
+    --color-primary-950: #2a2623;
+
+    /* Secondary Colors */
+    --color-secondary-50: #fdfcfb;
+    --color-secondary-100: #faf8f5;
+    --color-secondary-200: #f5f1eb;
+    --color-secondary-300: #ede7dd;
+    --color-secondary-400: #e3dacb;
+    --color-secondary-500: #d6c9b5;
+    --color-secondary-600: #c4b49a;
+    --color-secondary-700: #ad9a7d;
+    --color-secondary-800: #8f7d62;
+    --color-secondary-900: #71614c;
+
+    /* Accent Colors */
+    --color-accent-50: #fbf7f5;
+    --color-accent-100: #f7eeea;
+    --color-accent-200: #eedcd4;
+    --color-accent-300: #e2c4b8;
+    --color-accent-400: #d4a593;
+    --color-accent-500: #c28972;
+    --color-accent-600: #b0725a;
+    --color-accent-700: #925c49;
+    --color-accent-800: #784c3d;
+    --color-accent-900: #634035;
+
+    /* Fonts */
+    --font-heading: "Cormorant Garamond", Georgia, serif;
+    --font-body: "Source Sans 3", system-ui, sans-serif;
+
+    /* Custom Spacing */
+    --spacing-18: 4.5rem;
+    --spacing-22: 5.5rem;
+    --spacing-30: 7.5rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@layer base {
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 6rem;
+    }
+
+    body {
+        font-family: var(--font-body);
+        color: var(--color-primary-900);
+        background-color: var(--color-secondary-50);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-family: var(--font-heading);
+        font-weight: 400;
+        line-height: 1.2;
+        color: var(--color-primary-950);
+    }
+
+    :focus-visible {
+        outline: 2px solid var(--color-accent-500);
+        outline-offset: 2px;
+    }
+
+    /* Scroll margin for anchor links - accounts for fixed navbar */
+    section[id] {
+        scroll-margin-top: 6rem;
+    }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+@layer utilities {
+    .section-padding-y {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    @media (min-width: 768px) {
+        .section-padding-y {
+            padding-top: 7rem;
+            padding-bottom: 7rem;
+        }
+    }
+
+    .container-custom {
+        max-width: 1280px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+        .container-custom {
+            padding-left: 2.5rem;
+            padding-right: 2.5rem;
+        }
+    }
+
+    .font-heading {
+        font-family: var(--font-heading);
+    }
+
+    .font-body {
+        font-family: var(--font-body);
+    }
 }
