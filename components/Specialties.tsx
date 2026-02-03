@@ -53,8 +53,8 @@ export default function Specialties() {
     return (
         <section
             id="specialties"
-            ref={sectionRef}
             className="section-padding-y bg-secondary-50"
+            ref={sectionRef}
         >
             <div className="container-custom">
                 {/* Section Header */}
@@ -62,64 +62,76 @@ export default function Specialties() {
                     <h2
                         className={`
                             font-heading text-3xl md:text-4xl font-semibold text-primary-950 mb-4
-                            transition-all duration-1000 ease-out
+                            transition-all duration-[1400ms] ease-out
                             motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
-                            ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
+                            ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
                         `}
                     >
                         How I Can Help
                     </h2>
-
                     <p
                         className={`
                             text-primary-500 max-w-2xl mx-auto
-                            transition-all duration-700 ease-out
+                            transition-all duration-[1200ms] ease-out
                             motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
-                            ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}
+                            ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
                         `}
-                        style={{ transitionDelay: isVisible ? "150ms" : "0ms" }}
+                        style={{ transitionDelay: isVisible ? "250ms" : "0ms" }}
                     >
-                        I specialize in helping high-achieving adults who are tired of just
-                        surviving and ready to start thriving.
+                        I specialize in helping high-achieving adults who are tired of
+                        just surviving and ready to start thriving.
                     </p>
                 </div>
 
-                {/* Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-                    {specialties.map((item, index) => (
+                {/* Specialty Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {specialties.map((specialty, index) => (
                         <div
-                            key={item.id}
+                            key={specialty.id}
                             className={`
-                                bg-white border border-secondary-200
-                                px-8 py-10 text-center
-                                transition-all duration-700 ease-out
+                                bg-white 
+                                border 
+                                border-secondary-200 
+                                p-8 
+                                text-center
+                                flex
+                                flex-col
                                 hover:border-accent-300
+                                transition-all
+                                duration-[1200ms]
+                                ease-out
                                 motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
-                                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
+                                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
                             `}
-                            style={{ transitionDelay: isVisible ? `${300 + index * 150}ms` : "0ms" }}
+                            style={{ transitionDelay: isVisible ? `${500 + index * 200}ms` : "0ms" }}
                         >
-                            {/* Title */}
-                            <h3 className="font-heading text-xl font-medium text-primary-900 mb-6">
-                                {item.title}
-                            </h3>
-
-                            {/* Circular Image - Fixed with object-cover */}
-                            <div className="mb-8 flex justify-center">
-                                <div className="w-48 h-48 rounded-full bg-secondary-100 overflow-hidden relative">
+                            {/* Circular Image - Fixed alignment */}
+                            <div className="mx-auto mb-6">
+                                <div
+                                    className="
+                                        w-40 h-40
+                                        rounded-full
+                                        overflow-hidden
+                                        bg-secondary-100
+                                        relative
+                                    "
+                                >
                                     <Image
-                                        src={item.image}
-                                        alt={item.title}
+                                        src={specialty.image}
+                                        alt={specialty.title}
                                         fill
-                                        className="object-cover"
-                                        sizes="192px"
+                                        className="object-cover object-center"
+                                        sizes="160px"
                                     />
                                 </div>
                             </div>
 
-                            {/* Description */}
-                            <p className="text-primary-500 leading-relaxed">
-                                {item.description}
+                            <h3 className="font-heading text-xl font-medium text-primary-900 mb-4">
+                                {specialty.title}
+                            </h3>
+
+                            <p className="text-primary-500 leading-relaxed flex-grow">
+                                {specialty.description}
                             </p>
                         </div>
                     ))}

@@ -1,34 +1,91 @@
 // components/About.tsx
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 export default function About() {
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.2 }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, []);
+
     return (
         <section
             id="about"
             className="section-padding-y bg-white"
+            ref={sectionRef}
         >
             <div className="container-custom">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-                    {/* Left: Text */}
+                    {/* Left: Text - Animates SECOND */}
                     <div className="order-2 md:order-1">
-                        <h2 className="font-heading text-3xl md:text-4xl font-semibold text-primary-950 mb-6">
+                        <h2
+                            className={`
+                font-heading text-3xl md:text-4xl font-semibold text-primary-950 mb-6
+                transition-all duration-[1400ms] ease-out
+                motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
+                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
+              `}
+                            style={{ transitionDelay: isVisible ? "400ms" : "0ms" }}
+                        >
                             Hi, I&apos;m Dr. Maya Reynolds
                         </h2>
 
-                        <p className="text-primary-500 leading-relaxed mb-5">
+                        <p
+                            className={`
+                text-primary-500 leading-relaxed mb-5
+                transition-all duration-[1200ms] ease-out
+                motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
+                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
+              `}
+                            style={{ transitionDelay: isVisible ? "600ms" : "0ms" }}
+                        >
                             I&apos;m a licensed clinical psychologist with over a decade of
                             experience helping adults work through anxiety, trauma, and the
                             unique challenges that come with high-pressure lives.
                         </p>
 
-                        <p className="text-primary-500 leading-relaxed mb-5">
+                        <p
+                            className={`
+                text-primary-500 leading-relaxed mb-5
+                transition-all duration-[1200ms] ease-out
+                motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
+                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
+              `}
+                            style={{ transitionDelay: isVisible ? "750ms" : "0ms" }}
+                        >
                             My clients are often entrepreneurs, creatives, and professionals
                             who are accomplished on the outside but struggling on the inside.
                             They&apos;re used to figuring things out on their own—but they&apos;ve
                             reached a point where that&apos;s no longer working.
                         </p>
 
-                        <p className="text-primary-500 leading-relaxed mb-8">
+                        <p
+                            className={`
+                text-primary-500 leading-relaxed mb-8
+                transition-all duration-[1200ms] ease-out
+                motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
+                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
+              `}
+                            style={{ transitionDelay: isVisible ? "900ms" : "0ms" }}
+                        >
                             My approach is warm, direct, and grounded in evidence-based methods.
                             I won&apos;t just nod and take notes—I&apos;ll work alongside you,
                             offering real tools and insights you can use right away. Together,
@@ -39,23 +96,26 @@ export default function About() {
                         {/* CTA Button */}
                         <a
                             href="#credentials"
-                            className="
-                inline-flex
-                items-center
+                            className={`
+                inline-flex 
+                items-center 
                 gap-3
-                px-8
+                px-8 
                 py-4
                 border-2
                 border-primary-800
                 text-primary-800
                 hover:bg-primary-800
                 hover:text-white
-                transition-colors
+                transition-all
                 duration-300
                 text-sm
                 font-medium
                 tracking-wide
-              "
+                motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
+                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
+              `}
+                            style={{ transitionDelay: isVisible ? "1050ms" : "0ms" }}
                         >
                             View My Background
                             <svg
@@ -74,8 +134,15 @@ export default function About() {
                         </a>
                     </div>
 
-                    {/* Right: Images */}
-                    <div className="order-1 md:order-2 relative">
+                    {/* Right: Images - Animates FIRST */}
+                    <div
+                        className={`
+              order-1 md:order-2 relative
+              transition-all duration-[1400ms] ease-out
+              motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
+              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
+            `}
+                    >
                         {/* Main Large Image */}
                         <div className="aspect-square max-w-md mx-auto bg-secondary-100 rounded-3xl overflow-hidden relative shadow-lg">
                             <Image
@@ -89,23 +156,27 @@ export default function About() {
 
                         {/* Overlapping Small Circle */}
                         <div
-                            className="
-                absolute
-                -bottom-6
-                -left-6
-                md:bottom-8
-                md:-left-8
-                w-24
-                h-24
-                md:w-32
-                md:h-32
-                rounded-full
-                bg-accent-100
-                border-4
+                            className={`
+                absolute 
+                -bottom-6 
+                -left-6 
+                md:bottom-8 
+                md:-left-8 
+                w-24 
+                h-24 
+                md:w-32 
+                md:h-32 
+                rounded-full 
+                bg-accent-100 
+                border-4 
                 border-white
                 overflow-hidden
                 shadow-md
-              "
+                transition-all duration-[1000ms] ease-out
+                motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:scale-100
+                ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"}
+              `}
+                            style={{ transitionDelay: isVisible ? "600ms" : "0ms" }}
                         >
                             <Image
                                 src="/images/office-2.jpeg"

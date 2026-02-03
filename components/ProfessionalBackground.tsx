@@ -1,10 +1,30 @@
 // components/ProfessionalBackground.tsx
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function ProfessionalBackground() {
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const [isVisible, setIsVisible] = useState(false);
     const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.15 }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, []);
 
     const credentials = [
         {
@@ -52,14 +72,30 @@ export default function ProfessionalBackground() {
         <section
             id="credentials"
             className="section-padding-y bg-secondary-50"
+            ref={sectionRef}
         >
             <div className="container-custom">
                 {/* Section Header */}
                 <div className="text-center mb-10">
-                    <h2 className="font-heading text-3xl md:text-4xl font-semibold text-primary-950 mb-3">
+                    <h2
+                        className={`
+              font-heading text-3xl md:text-4xl font-semibold text-primary-950 mb-3
+              transition-all duration-[1400ms] ease-out
+              motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
+              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
+            `}
+                    >
                         Professional Background
                     </h2>
-                    <p className="text-primary-500 max-w-xl mx-auto">
+                    <p
+                        className={`
+              text-primary-500 max-w-xl mx-auto
+              transition-all duration-[1200ms] ease-out
+              motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
+              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
+            `}
+                        style={{ transitionDelay: isVisible ? "250ms" : "0ms" }}
+                    >
                         Credentials matter when choosing a therapist. Here&apos;s my
                         educational background and training.
                     </p>
@@ -70,7 +106,13 @@ export default function ProfessionalBackground() {
                     {credentials.map((item, index) => (
                         <div
                             key={index}
-                            className="border-b border-secondary-200 bg-white first:rounded-t-lg last:rounded-b-lg"
+                            className={`
+                border-b border-secondary-200 bg-white first:rounded-t-lg last:rounded-b-lg
+                transition-all duration-[1000ms] ease-out
+                motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
+                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
+              `}
+                            style={{ transitionDelay: isVisible ? `${500 + index * 150}ms` : "0ms" }}
                         >
                             <button
                                 type="button"

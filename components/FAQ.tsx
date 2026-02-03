@@ -1,10 +1,30 @@
 // components/FAQ.tsx
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function FAQ() {
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const [isVisible, setIsVisible] = useState(false);
     const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.15 }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, []);
 
     const faqs = [
         {
@@ -47,14 +67,30 @@ export default function FAQ() {
         <section
             id="faq"
             className="section-padding-y bg-white"
+            ref={sectionRef}
         >
             <div className="container-custom">
                 {/* Section Header */}
                 <div className="text-center mb-10">
-                    <h2 className="font-heading text-3xl md:text-4xl font-semibold text-primary-950 mb-3">
+                    <h2
+                        className={`
+              font-heading text-3xl md:text-4xl font-semibold text-primary-950 mb-3
+              transition-all duration-[1400ms] ease-out
+              motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
+              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
+            `}
+                    >
                         Questions You Might Have
                     </h2>
-                    <p className="text-primary-500 max-w-xl mx-auto">
+                    <p
+                        className={`
+              text-primary-500 max-w-xl mx-auto
+              transition-all duration-[1200ms] ease-out
+              motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
+              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
+            `}
+                        style={{ transitionDelay: isVisible ? "250ms" : "0ms" }}
+                    >
                         Starting therapy can bring up a lot of questions. Here are answers
                         to some of the most common ones.
                     </p>
@@ -65,7 +101,13 @@ export default function FAQ() {
                     {faqs.map((faq, index) => (
                         <div
                             key={index}
-                            className="border-b border-secondary-200"
+                            className={`
+                border-b border-secondary-200
+                transition-all duration-[1000ms] ease-out
+                motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
+                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
+              `}
+                            style={{ transitionDelay: isVisible ? `${500 + index * 150}ms` : "0ms" }}
                         >
                             <button
                                 type="button"

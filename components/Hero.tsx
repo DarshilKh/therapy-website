@@ -29,20 +29,19 @@ export default function Hero() {
     return (
         <section
             id="hero"
-            className="min-h-screen flex items-center pt-32 pb-16 md:pt-24 md:pb-0 bg-secondary-50"
+            className="min-h-screen flex items-center pt-32 pb-16 md:pt-28 md:pb-12 bg-secondary-50"
             ref={sectionRef}
         >
             <div className="container-custom">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-24 items-center">
-                    {/* Left: Hero Image */}
+                    {/* Left: Hero Image - Animates FIRST */}
                     <div
                         className={`
-              order-2 md:order-1
-              transition-all duration-1000 ease-out
+              order-1 md:order-1
+              transition-all duration-[1400ms] ease-out
               motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
-              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
+              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
             `}
-                        style={{ transitionDelay: isVisible ? "200ms" : "0ms" }}
                     >
                         <div
                             className="
@@ -69,15 +68,16 @@ export default function Hero() {
                         </div>
                     </div>
 
-                    {/* Right: Text Content */}
-                    <div className="order-1 md:order-2 text-center md:text-left">
+                    {/* Right: Text Content - Animates SECOND */}
+                    <div className="order-2 md:order-2 text-center md:text-left">
                         <h1
                             className={`
                 font-heading text-4xl md:text-5xl lg:text-6xl font-semibold text-primary-950 mb-6 leading-tight
-                transition-all duration-1000 ease-out
+                transition-all duration-[1400ms] ease-out
                 motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
-                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
+                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
               `}
+                            style={{ transitionDelay: isVisible ? "400ms" : "0ms" }}
                         >
                             Anxiety & Trauma Therapy in Santa Monica, CA
                         </h1>
@@ -85,11 +85,11 @@ export default function Hero() {
                         <p
                             className={`
                 text-lg md:text-xl text-primary-500 mb-10 max-w-md mx-auto md:mx-0 leading-relaxed
-                transition-all duration-700 ease-out
+                transition-all duration-[1200ms] ease-out
                 motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
-                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}
+                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
               `}
-                            style={{ transitionDelay: isVisible ? "150ms" : "0ms" }}
+                            style={{ transitionDelay: isVisible ? "600ms" : "0ms" }}
                         >
                             Find relief from anxiety, heal from trauma, and reclaim your life
                             with compassionate, evidence-based therapy.
@@ -113,9 +113,9 @@ export default function Hero() {
                 font-medium
                 tracking-wide
                 motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
-                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}
+                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
               `}
-                            style={{ transitionDelay: isVisible ? "300ms" : "0ms" }}
+                            style={{ transitionDelay: isVisible ? "800ms" : "0ms" }}
                         >
                             Schedule a Free Consultation
                             <svg
@@ -136,11 +136,11 @@ export default function Hero() {
                         <p
                             className={`
                 mt-6 text-sm text-primary-400
-                transition-all duration-700 ease-out
+                transition-all duration-[1000ms] ease-out
                 motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
-                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}
+                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
               `}
-                            style={{ transitionDelay: isVisible ? "450ms" : "0ms" }}
+                            style={{ transitionDelay: isVisible ? "1000ms" : "0ms" }}
                         >
                             Licensed Clinical Psychologist • EMDR Certified • California PSY#12345
                         </p>

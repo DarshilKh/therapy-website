@@ -28,11 +28,9 @@ export default function Navbar() {
         <nav
             className={`
         fixed top-0 left-0 right-0 z-50
-        transition-all duration-300
-        ${isScrolled
-                ? "bg-secondary-50/95 backdrop-blur-sm shadow-sm"
-                : "bg-transparent"
-            }
+        bg-secondary-50
+        transition-shadow duration-300
+        ${isScrolled ? "shadow-sm" : ""}
       `}
         >
             <div className="container-custom">

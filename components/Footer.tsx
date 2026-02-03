@@ -1,15 +1,46 @@
 // components/Footer.tsx
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
 export default function Footer() {
+    const footerRef = useRef<HTMLElement>(null);
+    const [isVisible, setIsVisible] = useState(false);
     const currentYear = new Date().getFullYear();
 
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    observer.disconnect();
+                }
+            },
+            { threshold: 0.1 }
+        );
+
+        if (footerRef.current) {
+            observer.observe(footerRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, []);
+
     return (
-        <footer className="bg-primary-950">
+        <footer className="bg-primary-950" ref={footerRef}>
             {/* Top Section */}
             <div className="container-custom py-16">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
 
                     {/* Column 1: Brand */}
-                    <div className="md:col-span-1">
+                    <div
+                        className={`
+              md:col-span-1
+              transition-all duration-[1400ms] ease-out
+              motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
+              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
+            `}
+                    >
                         <h3 className="font-heading text-2xl text-white mb-4">
                             Dr. Maya Reynolds
                         </h3>
@@ -20,7 +51,14 @@ export default function Footer() {
                     </div>
 
                     {/* Column 2: Contact */}
-                    <div>
+                    <div
+                        className={`
+              transition-all duration-[1200ms] ease-out
+              motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
+              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
+            `}
+                        style={{ transitionDelay: isVisible ? "150ms" : "0ms" }}
+                    >
                         <h4 className="text-white text-sm font-semibold uppercase tracking-wider mb-6">
                             Contact
                         </h4>
@@ -50,7 +88,14 @@ export default function Footer() {
                     </div>
 
                     {/* Column 3: Hours */}
-                    <div>
+                    <div
+                        className={`
+              transition-all duration-[1200ms] ease-out
+              motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
+              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
+            `}
+                        style={{ transitionDelay: isVisible ? "300ms" : "0ms" }}
+                    >
                         <h4 className="text-white text-sm font-semibold uppercase tracking-wider mb-6">
                             Office Hours
                         </h4>
@@ -71,7 +116,14 @@ export default function Footer() {
                     </div>
 
                     {/* Column 4: Quick Links */}
-                    <div>
+                    <div
+                        className={`
+              transition-all duration-[1200ms] ease-out
+              motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
+              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
+            `}
+                        style={{ transitionDelay: isVisible ? "450ms" : "0ms" }}
+                    >
                         <h4 className="text-white text-sm font-semibold uppercase tracking-wider mb-6">
                             Quick Links
                         </h4>
@@ -122,7 +174,15 @@ export default function Footer() {
             </div>
 
             {/* Bottom Section */}
-            <div className="bg-black/20 py-6">
+            <div
+                className={`
+          bg-black/20 py-6
+          transition-all duration-[1000ms] ease-out
+          motion-reduce:transition-none motion-reduce:opacity-100
+          ${isVisible ? "opacity-100" : "opacity-0"}
+        `}
+                style={{ transitionDelay: isVisible ? "600ms" : "0ms" }}
+            >
                 <div className="container-custom">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-primary-500 text-sm">
                         <p>

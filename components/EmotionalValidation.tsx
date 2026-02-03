@@ -16,7 +16,7 @@ export default function EmotionalValidation() {
                     observer.disconnect();
                 }
             },
-            { threshold: 0.2 }
+            { threshold: 0.15 }
         );
 
         if (sectionRef.current) {
@@ -42,15 +42,22 @@ export default function EmotionalValidation() {
         >
             <div className="container-custom">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-                    {/* Left: Image */}
+                    {/* Left: Image - Animates FIRST */}
                     <div
                         className={`
-              aspect-[3/4] max-w-md mx-auto md:mx-0 rounded-lg overflow-hidden relative bg-secondary-200
-              transition-all duration-1000 ease-out
+              w-full
+              aspect-[3/4] 
+              max-w-md 
+              mx-auto 
+              md:mx-0 
+              rounded-lg 
+              overflow-hidden 
+              relative 
+              bg-secondary-200
+              transition-all duration-[1400ms] ease-out
               motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
-              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
+              ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
             `}
-                        style={{ transitionDelay: isVisible ? "100ms" : "0ms" }}
                     >
                         <Image
                             src="/images/sounds-familiar.jpg"
@@ -61,15 +68,16 @@ export default function EmotionalValidation() {
                         />
                     </div>
 
-                    {/* Right: Text Content */}
+                    {/* Right: Text Content - Animates SECOND */}
                     <div>
                         <h2
                             className={`
                 font-heading text-3xl md:text-4xl font-semibold text-primary-950 mb-8
-                transition-all duration-1000 ease-out
+                transition-all duration-[1400ms] ease-out
                 motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
-                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
+                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"}
               `}
+                            style={{ transitionDelay: isVisible ? "400ms" : "0ms" }}
                         >
                             Sound familiar?
                         </h2>
@@ -80,11 +88,11 @@ export default function EmotionalValidation() {
                                     key={index}
                                     className={`
                     flex items-start gap-3 text-primary-600
-                    transition-all duration-700 ease-out
+                    transition-all duration-[1000ms] ease-out
                     motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
-                    ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}
+                    ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
                   `}
-                                    style={{ transitionDelay: isVisible ? `${250 + index * 100}ms` : "0ms" }}
+                                    style={{ transitionDelay: isVisible ? `${600 + index * 150}ms` : "0ms" }}
                                 >
                                     <span className="text-accent-500 mt-1 shrink-0">—</span>
                                     <span className="leading-relaxed">{point}</span>
@@ -95,11 +103,11 @@ export default function EmotionalValidation() {
                         <p
                             className={`
                 text-primary-500 leading-relaxed
-                transition-all duration-700 ease-out
+                transition-all duration-[1000ms] ease-out
                 motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0
-                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}
+                ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
               `}
-                            style={{ transitionDelay: isVisible ? `${250 + bulletPoints.length * 100 + 150}ms` : "0ms" }}
+                            style={{ transitionDelay: isVisible ? `${600 + bulletPoints.length * 150 + 200}ms` : "0ms" }}
                         >
                             These experiences are more common than you might think—especially
                             among driven, thoughtful people like you. The good news? You

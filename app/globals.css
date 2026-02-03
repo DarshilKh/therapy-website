@@ -53,7 +53,7 @@
 @layer base {
     html {
         scroll-behavior: smooth;
-        scroll-padding-top: 6rem;
+        scroll-padding-top: 5rem;
     }
 
     body {
@@ -74,9 +74,8 @@
         outline-offset: 2px;
     }
 
-    /* Scroll margin for anchor links - accounts for fixed navbar */
     section[id] {
-        scroll-margin-top: 6rem;
+        scroll-margin-top: 5rem;
     }
 }
 
